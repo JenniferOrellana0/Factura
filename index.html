@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>FACTURA</title>
+  <link rel="stylesheet" href="css/Estilos.css">
+<script type="text/javascript">
+	function obtenerdatos()
+	{
+		var CAN = document.getElementById('CAN').value;
+		var PrecioUnitario = parseFloat(document.getElementById('PrecioUnitario').value);
+		var CAN2 = document.getElementById('CAN2').value;
+		var PrecioUnitario2 = parseFloat(document.getElementById('PrecioUnitario2').value);
+		var CAN3 = document.getElementById('CAN3').value;
+		var PrecioUnitario3 = parseFloat(document.getElementById('PrecioUnitario3').value);
+		var CAN4 = document.getElementById('CAN4').value;
+		var PrecioUnitario4 = parseFloat(document.getElementById('PrecioUnitario4').value);
+		
+        var ds = 0.15;
+        var MulDes,mds2,tt,tt2,tt3,tt4,tt5;
+        var Iva ="15%";
+        var Ip = 0.15;
+        var ttip;
+        var envio = "0.00";
+
+      tt2 = CAN * PrecioUnitario
+      tt3 = CAN2 * PrecioUnitario2
+      tt4 = CAN3 * PrecioUnitario3
+      tt5 = CAN4 * PrecioUnitario4
+
+      tt = tt2 + tt3 + tt4 + tt5 
+
+      MulDes = tt * ds 
+      var SubTtDes = tt - MulDes 
+
+      var Impuesto = tt * Ip
+      var ttip = tt - Impuesto
+
+       var pagar = tt - MulDes - Impuesto
+
+      	document.registro.tt.value = tt2;
+		document.registro.tt2.value = tt3;
+		document.registro.tt4.value = tt4;
+		document.registro.tt5.value = tt5;
+
+		document.registro.tp.value = tt;
+		document.registro.ds.value = ds + "%";
+		document.registro.mds.value = SubTtDes;
+		document.registro.ttip.value = ttip;
+		document.registro.Iva.value = Iva;
+		document.registro.Envio.value = pagar;
+
+	}
+</script>
+</head>
+<body>
+
+  
+<div class="dts">
+
+<div class="DtsEmpresa">
+
+<h2>Datos de la Empresa</h2>
+	
+<table border="1">
+<tr>
+	<td>Empresa</td><td><input type="text" name="Empresa" id="Empresa" ></td>
+</tr>	
+<tr>
+	<td>Nombre</td><td><input type="text" name="edad" id="edad" ></td>
+</tr>
+
+<tr>
+	<td>Sitio web</td><td><input type="text" name="edad" id="edad" ></td>
+</tr>
+
+<tr>
+	<td>Telefono</td><td><input type="text" name="" id="" ></td>
+</tr>
+
+<tr>
+	<td>Email</td><td><input type="text" name="" id="" ></td>
+</tr>
+
+</table><br/><br/><br/>
+
+
+</div>
+
+
+<div class="dtsCiente">
+
+<h2>Datos del Cliente</h2>
+
+<table border="1">
+<tr>
+	<td>Nombre</td><td><input type="text" name="Empresa" id="Empresa" ></td>
+</tr>	
+<tr>
+	<td>Identidad</td><td><input type="text" name="" id="" ></td>
+</tr>
+
+<tr>
+	<td>Direccion</td><td><input type="text" name="" id="" ></td>
+</tr>
+
+<tr>
+	<td>Telefono</td><td><input type="text" name="" id="" ></td>
+</tr>
+
+<tr>
+	<td>Email</td><td><input type="text" name="" id="" ></td>
+</tr>
+
+</table><br/><br/><br/>
+
+   </div>
+ </div>
+   
+
+<form name="registro">
+
+<table border="1">
+
+
+	<th>Articulo</th> <th>Cantidad</th> <th>Precio unitario</th> <th>Total</th>
+
+<tr>
+	<td><input type="text" name="Descripcion" id="Descripcion" ></td>
+	<td><input type="text" name="CAN" id="CAN" ></td>
+	<td><input type="text" name="PrecioUnitario" id="PrecioUnitario" ></td>
+	<td><input type="text" name="tt" id="tt" ></td>
+</tr>	
+
+<tr>
+
+   <td><input type="text" name="" id="" ></td>
+   <td><input type="text" name="CAN2" id="CAN2" ></td>
+    <td><input type="text" name="PrecioUnitario2" id="PrecioUnitario2" ></td>
+   <td><input type="text" name="tt2" id="TT2" ></td>
+
+</tr>
+
+<tr>
+
+   <td><input type="text" name="" id="" ></td>
+   <td><input type="text" name="CAN3" id="CAN3" ></td>
+    <td><input type="text" name="PrecioUnitario3" id="PrecioUnitario3" ></td>
+   <td><input type="text" name="tt4" id="tt4" ></td>
+</tr>
+
+<tr>
+
+   <td><input type="text" name="" id="" ></td>
+   <td><input type="text" name="CAN4" id="CAN4" ></td>
+    <td><input type="text" name="PrecioUnitario4" id="PrecioUnitario4" ></td>
+   <td><input type="text" name="tt5" id="tt5" ></td>
+</tr>
+
+</table><br/><br/><br/>
+
+
+
+    <hr>
+
+    <div class="btn">
+
+	    <input type="button" name="btn1" value="Facturar" onclick="obtenerdatos()"><br><br>
+
+    </div>
+  <hr>
+
+<table border="1">
+<tr>
+	<td>Total Compra</td><td><input type="text" name="tp" id="tp" ></td>
+</tr>	
+<tr>
+	<td>Descuento</td><td><input type="text" name="ds" id="ds" ></td>
+</tr>
+
+<tr>
+	<td>Total menos descuento</td><td><input type="text" name="mds" id="mds" ></td>
+</tr>
+
+<tr>
+	<td>Cobro de impuesto</td><td><input type="text" name="Iva" id="Iva" ></td>
+</tr>
+
+<tr>
+	<td>Total menos impuesto</td><td><input type="text" name="ttip" id="ttip" ></td>
+</tr>
+
+<tr>
+	  <td class="tt">Pagar un total de</td><td><input type="text" name="Envio" id="Envio" ></td>
+</tr>
+
+</table>
+</form>
+</center><br><br><br><br>
+
+
+</body>
+</html>
